@@ -13,10 +13,10 @@ class SettingsModel {
   String tooltip;
   SettingType settingType;
   Random rnd = Random();
+  var value;
 }
 
 class SettingsModelDouble extends SettingsModel {
-  double value;
   bool locked = false;
 
   final double min;

@@ -1,18 +1,41 @@
+import 'opart_fibonacci.dart';
 import 'palette.dart';
-import 'palette.dart';
-
+import 'settings_model.dart';
+import 'package:flutter/material.dart';
 enum OpArtType { Fibonacci, Trees, Waves, Wallpaper }
 
 class OpArt {
-  String opArtType;
+  OpArtType opArtType;
   OpartPalette palette = OpartPalette();
   String name = 'Fibonacci';
-  List<dynamic> attributes = List<dynamic>();
+  List<SettingsModel> attributes = List<SettingsModel>();
+  String image;
+
   OpArt({
     this.opArtType,
     this.name,
+    this.image
+  });
+
+List<Map<String, dynamic>> cache = List();
+
+
+  void saveToCache(){
+    Map<String, dynamic> map = Map();
+    for(int i = 0; i< attributes.length; i++){
+      map.addAll({attributes[i].label: attributes[i].value});
     }
-  );
+  }
+  void revertToCache(){
+
+  }
+  void initialise() {
+    switch (opArtType) {
+      case OpArtType.Fibonacci:
+        initializeFibonacci();
+    }
+  }
+
   void randomize() {
     for (int i = 0; i < attributes.length; i++) {
       attributes[i].randomize();
@@ -37,6 +60,4 @@ class OpArt {
     this.opArtType = map['opArtType'];
     this.palette = map['palette'];
   }
-
-
 }
