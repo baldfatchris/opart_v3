@@ -3,7 +3,10 @@ import 'opart_model.dart';
 import 'settings_model.dart';
 import 'dart:math';
 
-class Fibonacci extends OpArt {
+OpArt fibonacci = OpArt(opArtType: 'Fibonacci', name: 'Fibonacci',
+);
+
+
   SettingsModelDouble angleIncrement = SettingsModelDouble(
     label: 'Angle Increment',
     tooltip: 'The angle in radians between successive petals of the flower',
@@ -14,6 +17,9 @@ class Fibonacci extends OpArt {
     icon: Icon(Icons.track_changes),
     proFeature: false,
   );
+  List list = List();
+//   list.('hello');
+// fibonacci.attributes.add(angleIncrement);
   SettingsModelDouble petalToRadius = SettingsModelDouble(
     label: 'Petal Size',
     tooltip:

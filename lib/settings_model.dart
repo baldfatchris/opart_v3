@@ -13,7 +13,6 @@ class SettingsModel {
   String tooltip;
   SettingType settingType;
   Random rnd = Random();
-  // SettingsModel(this.label, this.icon, this.proFeature, this.tooltip, this.settingType);
 }
 
 class SettingsModelDouble extends SettingsModel {
