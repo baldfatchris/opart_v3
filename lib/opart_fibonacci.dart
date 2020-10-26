@@ -10,6 +10,7 @@ List<SettingsModel> initializeFibonacci() {
 
   return [
     SettingsModel(
+      name: 'angleIncrement',
       settingType: SettingType.double,
       label: 'Angle Increment',
       tooltip: 'The angle in radians between successive petals of the flower',
@@ -21,6 +22,7 @@ List<SettingsModel> initializeFibonacci() {
       proFeature: false,
     ),
     SettingsModel(
+      name: 'petalToRadius',
       settingType: SettingType.double,
       label: 'Petal Size',
       tooltip: 'The size of the petal as a multiple of its distance from the centre',
@@ -31,6 +33,12 @@ List<SettingsModel> initializeFibonacci() {
       icon: Icon(Icons.swap_horizontal_circle),
       proFeature: false,
     ),
+
+
+
+
+
+
   ];
 
 

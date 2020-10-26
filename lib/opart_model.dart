@@ -15,14 +15,8 @@ class OpArt {
   Random rnd;
 
   OpArt.fibonacci({this.opArtType}) {
-
       this.attributes = initializeFibonacci();
   }
-
-
-
-
-
 
   void saveToCache(){
     Map<String, dynamic> map = Map();

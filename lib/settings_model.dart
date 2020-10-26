@@ -9,6 +9,7 @@ enum SettingType { double, int, bool, button, color, setDefault, randomize }
 class SettingsModel {
 
   SettingType settingType;
+  String name;
   String label;
   String tooltip;
   Icon icon;
@@ -24,7 +25,7 @@ class SettingsModel {
   bool locked;
   var value;
 
-  SettingsModel({this.settingType, this.label, this.tooltip, this.icon, this.proFeature, this.min, this.max, this.randomMin, this.randomMax, this.zoom, this.defaultValue});
+  SettingsModel({this.settingType, this.name, this.label, this.tooltip, this.icon, this.proFeature, this.min, this.max, this.randomMin, this.randomMax, this.zoom, this.defaultValue});
 
   void randomize(Random rnd){
     if (!this.locked && (proVersion || !proVersion && !this.proFeature)) {
