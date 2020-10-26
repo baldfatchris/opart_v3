@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'opart_model.dart';
-import 'opart_model.dart';
 import 'settings_model.dart';
 import 'dart:math';
 

@@ -14,6 +14,8 @@ class SettingsModel {
   SettingType settingType;
   Random rnd = Random();
   var value;
+ void randomize(){ print('hello. I am random');};
+
 }
 
 class SettingsModelDouble extends SettingsModel {
@@ -44,6 +46,7 @@ class SettingsModelDouble extends SettingsModel {
   void setDefault() {
     this.value = this.defaultValue;
   }
+
 
   void randomize() {
     if (!this.locked && (proVersion || !proVersion && !this.proFeature)) {
