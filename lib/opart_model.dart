@@ -1,20 +1,25 @@
-import 'package:flutter/material.dart';
+import 'palette.dart';
 import 'palette.dart';
 
-class opArt{
+enum OpArtType {
+  Fibonacci, Trees, Waves, Wallpaper
+}
 
-  String type;
+class OpArt {
+  OpArtType opArtType;
+  OpartPalette palette = OpartPalette();
+  String name = 'Fibonacci';
 
-  opartPalette palette;
-
-
-  randomizePalette(){
-    opartPalette newPalette;
-
-
-
-    this.palette = newPalette;
+  randomizePalette() {
   }
 
+  Map<String,dynamic> toMap(){
+    Map<String, dynamic> currentMap = {'opArtType': this.opArtType, 'palette': this.palette,};
+    return currentMap;
+  }
+  void fromMap(Map<String, dynamic> map){
+    this.opArtType = map['opArtType'];
+    this.palette = map['palette'];
 
+  }
 }
