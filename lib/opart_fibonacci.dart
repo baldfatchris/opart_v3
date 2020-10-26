@@ -3,17 +3,14 @@ import 'opart_model.dart';
 import 'settings_model.dart';
 import 'dart:math';
 
-OpArt fibonacci = OpArt(
-  opArtType: OpArtType.Fibonacci,
-  name: 'Fibonacci',
-  image: '',
-);
 
 List<String> list = List();
 
-void initializeFibonacci() {
-  fibonacci.attributes.addAll([
-    SettingsModelDouble(
+List<SettingsModel> initializeFibonacci() {
+
+  return [
+    SettingsModel(
+      settingType: SettingType.double,
       label: 'Angle Increment',
       tooltip: 'The angle in radians between successive petals of the flower',
       min: 0,
@@ -23,10 +20,10 @@ void initializeFibonacci() {
       icon: Icon(Icons.track_changes),
       proFeature: false,
     ),
-    SettingsModelDouble(
+    SettingsModel(
+      settingType: SettingType.double,
       label: 'Petal Size',
-      tooltip:
-          'The size of the petal as a multiple of its distance from the centre',
+      tooltip: 'The size of the petal as a multiple of its distance from the centre',
       min: 0.01,
       max: 0.5,
       zoom: 100,
@@ -34,7 +31,9 @@ void initializeFibonacci() {
       icon: Icon(Icons.swap_horizontal_circle),
       proFeature: false,
     ),
-  ]);
+  ];
+
+
 }
 
 //   @override

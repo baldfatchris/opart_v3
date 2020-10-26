@@ -2,22 +2,26 @@ import 'opart_fibonacci.dart';
 import 'palette.dart';
 import 'settings_model.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
+
 enum OpArtType { Fibonacci, Trees, Waves, Wallpaper }
 
 class OpArt {
   OpArtType opArtType;
   OpartPalette palette = OpartPalette();
-  String name = 'Fibonacci';
   List<SettingsModel> attributes = List<SettingsModel>();
   String image;
+  List<Map<String, dynamic>> cache = List();
+  Random rnd;
 
-  OpArt({
-    this.opArtType,
-    this.name,
-    this.image
-  });
+  OpArt.fibonacci({this.opArtType}) {
 
-List<Map<String, dynamic>> cache = List();
+      this.attributes = initializeFibonacci();
+  }
+
+
+
+
 
 
   void saveToCache(){
@@ -26,25 +30,22 @@ List<Map<String, dynamic>> cache = List();
       map.addAll({attributes[i].label: attributes[i].value});
     }
   }
+
+
   void revertToCache(){
 
   }
-  void initialise() {
-    switch (opArtType) {
-      case OpArtType.Fibonacci:
-        initializeFibonacci();
-    }
-  }
+
 
   void randomize() {
     for (int i = 0; i < attributes.length; i++) {
-      attributes[i].randomize();
+      attributes[i].randomize(rnd);
     }
   }
 
-  void reset() {
+  void setDefault() {
     for (int i = 0; i < attributes.length; i++) {
-      attributes[i].reset();
+      attributes[i].setDefault();
     }
   }
 

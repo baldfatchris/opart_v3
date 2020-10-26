@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'opart_fibonacci.dart';
+import 'opart_model.dart';
+
+
 void main() {
-  runApp(MyApp());
+
+  runApp(OpArtLab());
 }
 
-class MyApp extends StatelessWidget {
+class OpArtLab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,9 +31,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   int _counter = 0;
 
+  OpArt opArt = OpArt.fibonacci(opArtType: OpArtType.Fibonacci);
+
+
   void _incrementCounter() {
+
     setState(() {
       _counter++;
     });
@@ -38,31 +46,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(fibonacci.name);
-    print(fibonacci.palette.paletteName);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      body: ListView.builder(
+          itemCount: opArt.attributes.length,
+          itemBuilder: (context, index){
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: 1, horizontal: 4),
+                child: Card(
+                child: ListTile(
+
+                  title: Text(opArt.attributes[index].label),
+
+                ),
+
+              ),
+
+            );
+          }
+      )
+
     );
   }
 }
