@@ -8,7 +8,7 @@ enum OpArtType { Fibonacci, Trees, Waves, Wallpaper }
 
 class OpArt {
   OpArtType opArtType;
-  OpartPalette palette = OpartPalette();
+  OpArtPalette palette = OpArtPalette();
   List<SettingsModel> attributes = List<SettingsModel>();
   String image;
   List<Map<String, dynamic>> cache = List();
@@ -16,6 +16,27 @@ class OpArt {
 
   OpArt.fibonacci({this.opArtType}) {
       this.attributes = initializeFibonacci();
+      this.reset();
+
+      print('palette name: ${this.palette.paletteName}');
+
+  }
+
+  void paint(Canvas canvas, Size size, Random rnd, double angle) {
+    print('size.width: ${size.width}');
+
+    switch(opArtType){
+      case OpArtType.Fibonacci:
+        paintFibonacci( canvas,  size,  rnd,  angle, attributes, palette);
+    }
+
+  }
+
+  void reset(){
+    for(int i = 0; i< attributes.length; i++){
+      attributes[i].value = attributes[i].defaultValue;
+    }
+
   }
 
   void saveToCache(){

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'opart_model.dart';
+import 'dart:math';
+
+Random rnd = Random();
 
 
 void main() {
@@ -50,24 +53,63 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView.builder(
-          itemCount: opArt.attributes.length,
-          itemBuilder: (context, index){
-            return Padding(
-              padding: EdgeInsets.symmetric(vertical: 1, horizontal: 4),
-                child: Card(
-                child: ListTile(
+      // body: ListView.builder(
+      //     itemCount: opArt.attributes.length,
+      //     itemBuilder: (context, index){
+      //       return Padding(
+      //         padding: EdgeInsets.symmetric(vertical: 1, horizontal: 4),
+      //           child: Card(
+      //             child: ListTile(
+      //
+      //               title: Text(opArt.attributes[index].name + ' - ' + opArt.attributes[index].value.toString()),
+      //
+      //
+      //             ),
+      //
+      //         ),
+      //
+      //       );
+      //     }
+      // )
+      body: ListView(children: <Widget>[
+        Text(
+          'Canvas',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, height: 2),
+        ),
+        Container(
+          width: 400,
+          height: 400,
+          child: CustomPaint(
+            painter: OpArtPainter(this.opArt, 3.1415),
+          ),
+        ),
+      ]),
 
-                  title: Text(opArt.attributes[index].label),
-
-                ),
-
-              ),
-
-            );
-          }
-      )
+      // body: CustomPaint(
+      //   painter: OpArtPainter(this.opArt, 3.1415),
+      // ),
 
     );
   }
+}
+
+class OpArtPainter extends CustomPainter {
+  OpArt opArt;
+  double animationVariable;
+
+  OpArtPainter(
+    this.opArt,
+    this.animationVariable,
+  );
+
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    opArt.paint(canvas, size, rnd, animationVariable);
+
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

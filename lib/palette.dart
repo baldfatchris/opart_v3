@@ -980,11 +980,24 @@ List defaultPalettes() {
   ];
 }
 
-class OpartPalette {
+class OpArtPalette {
   String paletteName = 'default';
-  List<Color> colorList= [Colors.black, Colors.white];
+  int numberOfColors = 2;
+  List<Color> colorList= [
+    Color(0xFF34a1af),
+    Color(0xFFa570a8),
+    Color(0xFFd6aa27),
+    Color(0xFF5f9d50),
+    Color(0xFF789dd1),
+    Color(0xFFc25666),
+    Color(0xFF2b7b1),
+    Color(0xFFd63aa),
+    Color(0xFF1f4ed),
+    Color(0xFF383c47)
+  ];
   Color backgroundColor = Colors.grey;
   Color lineColor = Colors.blue;
+  Color accentColor = Colors.red;
   String paletteType = 'random';
 
   void randomizePalette(String paletteType, int numberOfColours, Random rnd) {

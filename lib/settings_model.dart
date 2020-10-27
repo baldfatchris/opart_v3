@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 bool proVersion = false;
 
-enum SettingType { double, int, bool, button, color, setDefault, randomize }
+enum SettingType { double, int, bool, button, color, list }
 
 class SettingsModel {
 
@@ -21,11 +21,12 @@ class SettingsModel {
   double randomMax;
   double zoom;
   var defaultValue;
+  List options;
 
   bool locked;
   var value;
 
-  SettingsModel({this.settingType, this.name, this.label, this.tooltip, this.icon, this.proFeature, this.min, this.max, this.randomMin, this.randomMax, this.zoom, this.defaultValue});
+  SettingsModel({this.settingType, this.name, this.label, this.tooltip, this.icon, this.proFeature, this.min, this.max, this.randomMin, this.randomMax, this.zoom, this.defaultValue, this.options});
 
   void randomize(Random rnd){
     if (!this.locked && (proVersion || !proVersion && !this.proFeature)) {
